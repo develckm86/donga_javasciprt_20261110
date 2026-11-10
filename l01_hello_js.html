@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트의 동작 원리!!</title>
+    <style>
+        body{background-color: aquamarine;}
+        h1{color: white;}
+    </style>
+</head>
+<body>
+    <h1>자바스크립트의 동작 원리!!</h1>
+    <p>js는 브라우저가 html css를 렌더링한 후 동작합니다.</p>
+    <hr>
+    <p>
+        <b id="cnt">0</b>
+        <button id="cntUpBtn">업</button>
+    </p>
+    <script>
+        //자바스크립트 내부!!(브라우저가 js 엔진으로 실행하는 영역)\
+        //주석 : 실행되지 않는 설명
+        //모든프로그램은 실행중인 터미널이 존재 => 콘솔
+        //파이썬 print("안녕") -> 콘솔에서 출력
+        console.log("안녕!!");
+        console.log(cnt);
+        console.log(cntUpBtn);
+        cnt.innerText=1;
+        //cntUpBtn 버튼을 누르면 동작을 정의
+        cntUpBtn.onclick=()=>{
+            let c=Number(cnt.innerText);
+            c=c+1; //나 자신에게 1을 더한것을 대입
+            cnt.innerText=c;
+        }
+    </script>
+</body>
+</html>
