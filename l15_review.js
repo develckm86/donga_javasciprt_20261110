@@ -58,12 +58,15 @@ if( score >=60 ){ //scope 영역(조건이 만족할때 실행되는 영역)
 
 let age=15; 
 let label=null;
+
 if(age>=19){
     label="성인";
 }else{
     label="미성년";
 }
+
 label= (age>=19) ? "성인" : "미성년";  //3항연산자
+
 //label = "성인" if age >=19 else "미성년" #파이썬의 3항연산자
 console.log(label);
 

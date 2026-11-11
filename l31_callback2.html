@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수의 이해</title>
+</head>
+<body>
+    <h1 id="title">콜백함수의 이해</h1>
+    <script>
+        //id="title"
+        //let title=<h1>... h1 객체를 title 변수가 참조
+        console.log(title);
+        //모든 요소는 항상 이벤트를 감시(GUI)
+        //EventListener
+        //title에 클릭을 감시하다가 클릭을 하면 함수를 실행
+        title.onclick=function(){ //콜백함수(재정의)
+            console.log("클릭!");
+            title.style.color="red"
+        }   
+
+        title.addEventListener("click",function(){
+            title.style.backgroundColor="blue";
+        });//이벤트추가
+
+
+    </script>
+</body>
+</html>
