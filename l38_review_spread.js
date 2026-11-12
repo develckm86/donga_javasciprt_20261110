@@ -15,6 +15,15 @@ console.log(null*3); //Number(null) => 0
 let x; //undefined 정의되지 않은 ***(모든 프로그램은 정의되지 않은 변수는 사용불가=>오류)
 console.log(x); //정의하지 않은 오류인 상태 (없음이 아님)
 console.log(Number(x));
+//mutiple을 완성하세요~ 모든 매개변수의 곱을 반환하는 것 (for, reduce)
 function mutiple(...args){ //*args
-
+    //console.log(args);
+    let result=1;
+    //for(let i=0; i<args.length; i++){result*=args[i];}
+    //for(let n of args){result*=n;}
+    result=args.reduce( (prev,next)=>prev*next )
+    return result
 }
+console.log(mutiple(1,2,3,4));
+console.log(mutiple(1,2,3,4,5,6,7));
+
