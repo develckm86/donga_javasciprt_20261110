@@ -5,7 +5,6 @@ a="문자열";
 a=true; a=false;
 //기본형 : 
 
-
 //자료형 데이터 (리터럴하게 표기하는 것을 지원)
 
 a={key:"value", obj:{obj2:{obj3:{a:10,b:20}}}} //Object (js object 리터럴 표기법이 너무 좋아서 json을 만들어서 통신에 사용)
@@ -61,7 +60,6 @@ if(m.audience>=10000000){
     console.log("백만돌파!");
 }
 console.log("");
-
 //카드 2개를 더 만들어보기
 m=movies[1];
 console.log(`영화 : ${m.title}`);
