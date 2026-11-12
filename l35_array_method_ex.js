@@ -13,7 +13,8 @@ const movies=[
     new Movie("부산행",2016,"연상호",11570000),
     new Movie("아바타",2009,"카메론",13620000)
 ];
-//console.log(movies);
+
+console.log(movies);
 for (m of movies){
     console.log(m.title);
 }
