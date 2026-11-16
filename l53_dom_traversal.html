@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l53_dom_traversal.html 돔 탐색</title>
+    <style>
+        ol>li{
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="red">돔 객체를 찾아보자~ </h1>
+    ul>(li{$$})*5
+    <ul>
+        <li>01</li>
+        <li class="red">02</li>
+        <li>03</li>
+        <li class="red">04</li>
+        <li>05</li>
+    </ul>
+    <hr>
+    <ol id="helloOl">
+        <li class="blue">안녕~</li>
+        <li>안녕~</li>
+        <li class="blue">안녕~</li>
+    </ol>
+    <script>
+        //js document html 본문 객체
+        //돔 탐색 (DOM traversal)
+        let redArr=document.getElementsByClassName("red");
+        redArr=document.querySelectorAll("ul>li.red");
+        console.log(redArr);
+        for(let li of redArr){
+            li.style.color="red"
+        }
+
+        let blueArr=document.querySelectorAll("ol#helloOl>li.blue")
+        blueArr.forEach((li)=>{
+            li.style.color="blue"
+        })
+        let liArr=document.getElementsByTagName("li");
+        console.log(liArr);
+        liArr=document.querySelectorAll("ol>li")
+        console.log(liArr);
+        console.log(helloOl);
+        let ol=document.getElementById("helloOl");
+        console.log(ol);
+        ol=document.querySelector("#helloOl")                
+        console.log(ol);
+        
+    </script>
+</body>
+</html>

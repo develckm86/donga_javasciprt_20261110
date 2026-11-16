@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l53_dom_traversal2 돔탐색2</title>
+</head>
+<body>
+    <h1>돔 탐색2</h1>
+    <p>객체에는 자신의 부모 자식 형제의 선택자를 포함한다.</p>안녕!
+    <ul id="sayUl">
+        <li>잘가~</li>
+        <li>잘가~</li>
+        <li>잘가~</li>
+        <li>잘가~</li>
+        <li>잘가~</li>
+    </ul>
+    <script>
+        //console.log(sayUl);
+        let sayUl=document.getElementById("sayUl");
+        //console.log(sayUl);
+        sayUl=document.querySelector("#sayUl")
+        //console.log(sayUl);
+        console.log(sayUl.children);
+        console.log(sayUl.childNodes);
+        console.log(sayUl.previousElementSibling);
+        console.log(sayUl.previousSibling);
+        
+        
+
+    </script>
+</body>
+</html>
