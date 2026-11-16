@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaN에 대해 알아보자~</title>
+</head>
+<body style="background-color: palevioletred;">
+    <h1>NaN에 대해 알아보자~</h1>
+    <p>데이터 자체가 false(falsy data) : 0, "", null, NaN, undefined</p>
+    <script>
+        let age="23살"
+        console.log(Number(age),Boolean(NaN));
+        //isNaN() : 문자열이 수로 바뀔수 없으면 true 있으면 false
+        if(isNaN(age)){
+            console.log("나이는 수만 입력하세요!");
+        }else{
+            let msg=( age>=19 ) ? "성인" : "미성년"
+            console.log(msg);
+        }
+        //수로 형변환이 안되면 점수를 다시 입력 
+        //수로 형변환이 가능하면 통과 or 재시험 출력!
+        let score="77점"
+        if( !isNaN(score)){
+            score=Number(score)
+            console.log(score, (score>=50) ? "통과" : "재시험" );
+        }else{
+            console.log("성적은 수만 입력!");
+            
+        }
+    </script>
+    <p>
+        <input type="text" id="ageInput" value="20">
+        <button id="ageBtn">나이입력</button>
+    </p>
+    <p>
+        당신은 :
+        <strong id="ageMsg">성인 or 미성년</strong>
+        입니다.
+    </p>
+    <script>
+        //요소에 아이디 작성시 js에 변수가 요소를 객체로 참조
+        //console.log(ageInput, ageBtn, ageMsg);
+        //ageMsg.innerText="안녕!!!!"
+        //ageInput.value="100살"
+        ageBtn.onclick=()=>{
+            //alert("경고!!!");
+            let age=ageInput.value;
+            let msg="";
+            if(!isNaN(age)){
+                age=Number(age);
+                msg=( age>=19 ) ? "성인" : "미성년";
+            }else{
+                msg="나이는 수만 입력하세요!"
+            }
+            ageMsg.innerText=msg;
+        }
+    </script>
+    <hr>
+    <!-- http://127.0.0.1:5500/sign.up?userId=gildong -->
+    <form action="./sign.up">
+        <input name="userId" value="gildong">
+        <button>회원가입</button>
+    </form>
+    <hr>
+    <p> form의 name은 id처럼 문서 전체에서 유일한 식별자</p>
+    <p> 입력(input,select,button...)요소의 name form의 
+        속성(유일한 식별자)처럼 사용</p>
+    <form name="scoreForm" action="#">
+        <input name="score" value="77" type="text">
+        <button name="btn" type="button" >성적입력</button>
+        <p id="scoreMsg">당신의 성적은??</p>
+    </form>
+    <script>
+    function scoreHandler(){
+        let score=scoreForm.score.value;
+        let msg;
+        if(isNaN(score)){
+            msg="성적은 수만입력";
+        }else{
+            score=Number(score)
+            if(score>=90){
+                msg="A";
+            }else if(score>=80){
+                msg="B";
+            }else if(score>=70){
+                msg="C";
+            }else if(score>=60){
+                msg="D";
+            }else{
+                msg="F"
+            }
+            msg+=" 입니다."
+        }
+        scoreMsg.innerText=msg
+    }
+    scoreForm.btn.onclick=scoreHandler;
+        
+        
+    </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+</body>
+</html>
