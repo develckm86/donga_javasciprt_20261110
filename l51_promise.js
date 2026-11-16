@@ -19,6 +19,8 @@ setTimeout(()=>{
 //setTimeout(()=>{
     //...movies 영화 조회 ?? =>불가능
 //},3000)
+process.loadEnvFile(); // 현재 폴더의 .env를 읽음
+const KOBIS_KEY=process.env.KOBIS_KEY
 
 const fs=require("node:fs")
 fs.readFile("movies.json","utf-8",(error,text)=>{
@@ -26,7 +28,7 @@ fs.readFile("movies.json","utf-8",(error,text)=>{
     let movieCds=JSON.parse(text);
     for(let code of movieCds){
         console.log(code);
-        let url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=53ffd68b9e841eb41f44fe879e4f43c9&movieCd="+code;
+        let url=`http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${KOBIS_KEY}&movieCd=`+code;
         fetch(url)
             .then((res)=>res.json())
             .then((movie)=>{
@@ -45,7 +47,7 @@ async function loadMovies(){
     console.log("loadMovies",movieCds);
     movieCds=JSON.parse(movieCds);
     for(let code of movieCds){
-        let url="http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=53ffd68b9e841eb41f44fe879e4f43c9&movieCd="+code;
+        let url=`http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${KOBIS_KEY}&movieCd=`+code;
         let res=await fetch(url);
         let err=await fs2.writeFile("movie2_"+code+".json",data,"utf-8")
         let data=await res.text();

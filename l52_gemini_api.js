@@ -1,8 +1,8 @@
 //l52_gemini_api.js
-
+process.loadEnvFile(); // 현재 폴더의 .env를 읽음
+const GEMINI_KEY=process.env.GEMINI_KEY
 const BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const MODEL = "gemini-3.5-flash-lite";
-const GEMINI_KEY="AQ.Ab8RN6I0EHlX15S8aykWUB0C_vIQMbcqKutkYBXndIF9MaidCQ"
 async function askGemini(prompt){
     let url=`${BASE}/${MODEL}:generateContent`;
     //url?a=10&b=20  쿼리스트링으로 데이터 전송하는 방식은 GET, POST => 데이터를 숨겨보내는 방식
