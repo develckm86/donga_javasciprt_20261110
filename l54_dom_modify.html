@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>l54_dom_modify.html</title>
+    <title>l54_dom_modify.html 돔 수정</title>
+    <style>
+        .red{color: red;}
+        .bg_pink{background-color: pink;}
+        .border_1{border: 1px solid blue;}
+    </style>
 </head>
 <body>
-    
+    <h1>돔 수정</h1>
+    <hr>
+    <h2 id="title">수정될 타이틀</h2>
+    <script>
+        const title=document.querySelector("#title");
+        title.innerText="야호!";
+        title.textContent="<i>우와~</i>";
+        title.innerHTML="<i>머지??</i>";
+        title.style.color="blue"; //속성조작
+    </script>
+    <!-- p.red.bg_pink.border_1 -->
+    <p id="classTest" class="red bg_pink border_1">클래스로 스타일 적용~</p>
+
+    <script>
+        const classTest=document.querySelector("#classTest");
+        console.log(classTest.className); //red bg_pink border_1
+        //classTest.className="red border_1"
+        console.log(classTest.classList);
+        //classList : class 조작에 용이한 함수 제공
+        classTest.classList.remove("bg_pink");
+        classTest.classList.add("a")
+        console.log(classTest.classList);
+
+    </script>
+
 </body>
 </html>
