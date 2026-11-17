@@ -1,0 +1,45 @@
+<!-- l61_ajax_fetch.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동기식통신 vs 비동기식통신</title>
+</head>
+<body>
+    <h1>동기식통신 vs 비동기식통신(ajax Async JavaScript And XML)</h1>
+    <p>SPA : 모든 페이지가 전환없이 비동기적통신으로 이루어진 웹사이트</p>
+    <p>MPA : 일반적으로 페이지가 전환되면서 동작하는 웹사이트</p>
+    <hr>
+    <a href="https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&current=rain,temperature_2m&timezone=Asia%2FTokyo&forecast_days=1">
+        동기적으로 날씨 데이터 불러오기
+    </a>
+    <hr>
+    <button id="loadMeteo">비동기적(AJAX)으로 날씨 데이터 불러오기</button>
+    <div id="meteoData"></div>
+    <script>
+        const meteoData=document.getElementById("meteoData");
+        const loadMeteo=document.getElementById("loadMeteo");
+        async function loadMeteoHandler(위도=37.566,경도=126.9784){
+            //let url="https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&daily=rain_sum,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo";
+            let url="https://api.open-meteo.com/v1/forecast?";
+            let params=new URLSearchParams({
+                latitude: 위도,
+                longitude : 경도,
+                daily : "temperature_2m_max,temperature_2m_min,precipitation_probability_max,rain_sum",
+                timezone : "Asia/Tokyo"
+            })
+            url+=params;
+            let res=await fetch(url);
+            let data=await res.json()
+            console.log(data);
+            meteoData.innerText=JSON.stringify(data)
+        }
+        //이벤트의 콜백함수는 매개변수로 이벤트 객체를 포함하기 때문에
+        //loadMeteoHandler 의 첫번째 매개변수로 이벤트가 들어가서 오류발생 
+        //loadMeteo.addEventListener("click",loadMeteoHandler);
+        loadMeteo.addEventListener("click",(e)=>{loadMeteoHandler()});
+
+    </script>
+</body>
+</html>

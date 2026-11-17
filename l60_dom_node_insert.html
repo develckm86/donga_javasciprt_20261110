@@ -1,0 +1,51 @@
+<!-- l60_dom_node_insert.html -->
+ <!DOCTYPE html>
+ <html lang="ko">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 요소를 생성 추가해보자 </title>
+ </head>
+ <body>
+    <h1>요소를 생성 추가해보자</h1>
+    <p>1.innerHTML : 요소를 문자열로 추가(쉽고,느리다.)</p>
+    <p>2.createElement : 요소를 생성해서 추가(어렵고,빠르다)</p>
+    <hr>
+    <h2>영화목록 조회 
+        <button id="loadMovie1">조회(innerHTML)</button>
+        <button id="loadMovie2">조회(createElement)</button>
+    </h2>
+    <ul id="moviesUl"></ul>
+    <script>
+        //조회한내역 fetch(url).then(res=>res.json()).then(movies=>{})
+        const movies=["괴물","인셉션","기생충","스파이더맨"];
+        const loadMovie1=document.getElementById("loadMovie1");
+        const loadMovie2=document.getElementById("loadMovie2");
+        const moviesUl=document.getElementById("moviesUl")
+        console.log(loadMovie1,loadMovie2,moviesUl);
+        loadMovie1.onclick=()=>{
+            let html="";
+            for(let m of movies){
+                html+=`<li>영화제목 : ${m}</li>`;
+            }
+            moviesUl.innerHTML=html;
+        }
+        loadMovie2.onclick=()=>{
+            //const li=document.createElement("li");
+            //const textNode=document.createTextNode(`제목 : ${movies[0]}`);
+            //node1.append(node2) : 해당 요소의 자식 맨 뒤에 붙이겠다.
+            //li.append(textNode);
+            //moviesUl.prepend(li)
+            moviesUl.innerHTML="";//해당 요소의 자식요소를 지우겠다.
+            for(let m of movies){
+                const li =document.createElement("li");
+                li.textContent=`제목 : ${m} `;
+                moviesUl.append(li);
+            }
+        }
+
+
+
+    </script>
+ </body>
+ </html>

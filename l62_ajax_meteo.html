@@ -1,0 +1,16 @@
+<!-- l62_ajax_meteo.html -->
+ <!DOCTYPE html>
+ <html lang="ko">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제 meteo에서 날씨 데이터를 비동기적으로 불러오기</title>
+ </head>
+ <body>
+    <h1>과제 meteo에서 날씨 데이터를 비동기적으로 불러오기</h1>
+    <p>https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&daily=rain_sum,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_probability_max,showers_sum&timezone=Asia%2FTokyo&forecast_days=1</p>
+    <hr>
+    <button id="loadMeteoBtn">불러오기</button>
+    <div id="meteoContainer"></div>
+ </body>
+ </html>
