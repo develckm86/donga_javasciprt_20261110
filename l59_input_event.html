@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l59_input_event.html 입력 요소의 이벤트</title>
+</head>
+<body>
+    <h1>입력 요소의 이벤트</h1>
+    <hr>
+    <input type="text" id="userId">
+    <script>
+        const userId=document.getElementById("userId");
+        //console.log(userId);
+        userId.onfocus=(e)=>{
+            e.currentTarget.style.backgroundColor="pink"
+            console.log("userId 포커스");
+        }
+        userId.onblur=(e)=>{
+            e.currentTarget.style.backgroundColor=""
+            console.log("userId 벗어남");
+        }
+        userId.onkeydown=(e)=>{ //oninput
+            console.log("키 누름",e.key,e.code, e.repeat);
+        }
+        
+        userId.onchange=(e)=>{ //**제일 많이 사용됨
+            console.log("입력한 데이터가 바뀔때(blur) 동작!!");
+        }
+    </script>
+</body>
+</html>
