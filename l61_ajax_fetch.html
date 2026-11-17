@@ -5,6 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>동기식통신 vs 비동기식통신</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f7f7fb;
+            padding: 1em 2em;
+        }
+        #loadMeteoBtn {
+            padding: 0.6em 1.4em;
+            border: none;
+            border-radius: 20px;
+            background-color: hotpink;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        #loadMeteoBtn:hover {
+            background-color: deeppink;
+        }
+        #meteoData {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em;
+            margin-top: 1.5em;
+        }
+        .day {
+            width: 220px;
+            margin: 0;
+            padding: 1.2em;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #ffe4ec, #ffffff);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        .day .date {
+            display: block;
+            margin-bottom: 0.8em;
+            font-weight: bold;
+            color: #c2185b;
+        }
+        .day .temp {
+            display: block;
+            margin-bottom: 0.8em;
+            font-size: 1.6em;
+        }
+        .day .max { color: #e53935; }
+        .day .min { color: #1e88e5; }
+        .day .rain {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.6em;
+            border-top: 1px solid #f3c1d3;
+            color: #555;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
     <h1>동기식통신 vs 비동기식통신(ajax Async JavaScript And XML)</h1>
@@ -20,6 +74,7 @@
     <script>
         const meteoData=document.getElementById("meteoData");
         const loadMeteo=document.getElementById("loadMeteo");
+        
         async function loadMeteoHandler(위도=37.566,경도=126.9784){
             //let url="https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&daily=rain_sum,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTokyo";
             let url="https://api.open-meteo.com/v1/forecast?";
@@ -32,8 +87,34 @@
             url+=params;
             let res=await fetch(url);
             let data=await res.json()
-            console.log(data);
-            meteoData.innerText=JSON.stringify(data)
+            let html="";
+            // for(let i=0; i<data["daily"]["time"].length; i++){
+            //     html+=
+            //         `<p>
+            //             ${data["daily"]["time"][i]} : 
+            //             온도 ${data["daily"]["temperature_2m_max"][i]} /
+            //              ${data["daily"]["temperature_2m_min"][i]}℃,  
+            //             강수확률 ${data["daily"]["precipitation_probability_max"][i]}%, 
+            //             강수량 ${data["daily"]["rain_sum"][i]}mm
+            //         </p>`;    
+            // }
+            for (let i = 0; i < data["daily"]["time"].length; i++) {
+                html +=` 
+                    <p class="day">
+                        <span class="date">📅 ${data["daily"]["time"][i]}</span>
+                        <span class="temp">
+                            <span class="max">${data["daily"]["temperature_2m_max"][i]}℃</span> /
+                            <span class="min">${data["daily"]["temperature_2m_min"][i]}℃</span>
+                        </span>
+                        <span class="rain">
+                            <span>☔ ${data["daily"]["precipitation_probability_max"][i]}%</span>
+                            <span>💧 ${data["daily"]["rain_sum"][i]}mm</span>
+                        </span>
+                    </p>`;
+            }        
+            meteoData.innerHTML=html
+
+
         }
         //이벤트의 콜백함수는 매개변수로 이벤트 객체를 포함하기 때문에
         //loadMeteoHandler 의 첫번째 매개변수로 이벤트가 들어가서 오류발생 
