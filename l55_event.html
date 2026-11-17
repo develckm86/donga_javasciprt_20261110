@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l55_event.html 이벤트에 대해 알아보자</title>
+</head>
+<body>
+    <script>//문서와 창 이벤트
+        //console.log(title);
+        let title=window.document.getElementById("title");
+        console.log(title);
+        //문서를 위에서부터 순서대로 읽어서=>객체=>화면출력
+        //window : 브라우저,창 (최상위 객체로 생략가능)
+        //window.document : 문서객체
+        //이벤트 함수는 비동기함수는 아니고 실행시점만 비동기적이다.
+        window.onload=()=>{ 
+            //창이 열리고 문서를 로드한 시점,모든 리소스 로딩
+            title=document.getElementById("title")
+            console.log("window.onload",title);
+            
+        }
+        //document DOMContentLoaded : html을 다 읽고 객체로 준비된 시점
+        document.addEventListener("DOMContentLoaded",()=>{
+            console.log("DOMContentLoaded",document.getElementById("title"));
+        })
+        
+    </script>
+
+    <h1 id="title">이벤트에 대해 알아보자</h1>
+    <p>모든 요소는 다양한 이벤트(마우스,터치,키보드,폼,창,프린트,미디어...)를 
+        속성을 갖는다.</p>
+    <script>
+        title=document.getElementById("title");
+        console.log(title);
+    </script>
+</body>
+</html>

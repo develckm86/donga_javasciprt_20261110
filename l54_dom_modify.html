@@ -19,12 +19,13 @@
         title.innerText="야호!";
         title.textContent="<i>우와~</i>";
         title.innerHTML="<i>머지??</i>";
-        title.style.color="blue"; //속성조작
+        title["style"]["color"]="blue"; //속성조작
     </script>
     <!-- p.red.bg_pink.border_1 -->
     <p id="classTest" class="red bg_pink border_1">클래스로 스타일 적용~</p>
 
     <script>
+        class A{} new A();
         const classTest=document.querySelector("#classTest");
         console.log(classTest.className); //red bg_pink border_1
         //classTest.className="red border_1"

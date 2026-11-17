@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>l56_addEventListener.html 속성이벤트 vs addEvent</title>
+</head>
+<body>
+    <h1>속성이벤트 vs addEvent</h1>
+    
+    <hr>
+    <button id="btn1">속성 이벤트 클릭</button>
+    
+    <hr>
+    <button id="btn2">addEvent 클릭</button>
+    
+    <script>
+        const btn1=document.getElementById("btn1")
+        const btn2=document.getElementById("btn2")
+        //btn1을 클릭할때 기능을 1개 추가
+        btn1.onclick=()=>{console.log("첫번째클릭함수");}        
+        //.....작업을 하다가 기존 기능을 두고 다른 기능을 추가
+        btn1.onclick=()=>{console.log("두번째클릭함수");}        
+        //btn1 클릭시 정의한 콜백함수 2개가 모두 실행되는 것을 기대.. 
+        //하지만 속성에 이벤트를 정의하는 것은 기존의 콜백함수를 바꾸는 것!!
+
+        btn2.addEventListener("click",(e)=>{console.log("첫번째기능");});
+        btn2.addEventListener("click",(e)=>{console.log("두번째기능");});
+        btn2.addEventListener("click",(e)=>{console.log("세번째기능");});
+
+        //document.DOMContentLoded 는 무조건 addEventListener 로만 정의 가능
+
+    </script>
+</body>
+</html>
